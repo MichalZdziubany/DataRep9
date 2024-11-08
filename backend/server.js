@@ -51,7 +51,9 @@ app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
+//recieves the data from the client
 app.post('/api/movies', (req, res) => {
+    console.log("Movie:" + req.body.title);
     res.send(`Movie Recieved`);
 });
 
