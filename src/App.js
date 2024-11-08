@@ -16,6 +16,7 @@ function App() {
         <Route path="/read" element={<Read />} />
         <Route path="/create" element={<Create />} />
       </Routes>
+      
       <Footer />
     </Router>
   );
