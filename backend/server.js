@@ -1,6 +1,14 @@
+//express server created on port 4000
 const express = require('express');
 const app = express();
 const port = 4000;
+
+//allow the server to recieve data from the client
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//adds cors to the server so our client can send get requests to it
 const cors = require('cors');
 app.use(cors());
 
@@ -11,6 +19,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+//returns the movies json array to client calling this url
 app.get('/api/movies', (req, res) => {
     const movies = [
         {
@@ -42,6 +51,7 @@ app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
+//error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');

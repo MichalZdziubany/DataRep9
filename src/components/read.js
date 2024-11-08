@@ -6,6 +6,7 @@ const Read = () => {
 
   const [movies, setMovies] = useState([]);
 
+  //calls api from the server.js on localhost:4000
   useEffect(() => {
     axios.get('http://localhost:4000/api/movies')
       .then((response) => {
