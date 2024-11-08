@@ -51,6 +51,10 @@ app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
+app.post('/api/movies', (req, res) => {
+    res.send(`Movie Recieved`);
+});
+
 //error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
