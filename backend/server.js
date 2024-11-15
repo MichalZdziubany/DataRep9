@@ -7,6 +7,15 @@ const port = 4000;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://admin:admin@movieapp.6k8vm.mongodb.net/?retryWrites=true&w=majority&appName=MovieApp');
 
+//create the schema for mongoDB
+const movieSchema = new mongoose.Schema({
+  title: String,
+  year: String,
+  poster: String
+});
+
+const Movie = mongoose.model('Movie', movieSchema);
+
 //allow the server to recieve data from the client
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
