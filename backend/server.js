@@ -38,6 +38,12 @@ app.get('/api/movies', async (req, res) => {
   res.json(movies);
 });
 
+//adds a parameter for object id in the url which returns a specific movie from the database
+app.get('/api/movie/:id', async (req, res) => {
+  const movie = await Movie.findById(req.params.id);
+  res.send(movie);
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
