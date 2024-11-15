@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 const port = 4000;
 
+//connect to the mongodb cluster
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://admin:admin@movieapp.6k8vm.mongodb.net/?retryWrites=true&w=majority&appName=MovieApp');
+
 //allow the server to recieve data from the client
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
