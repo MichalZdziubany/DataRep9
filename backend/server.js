@@ -41,7 +41,7 @@ app.get('/api/movies', async (req, res) => {
 //adds a parameter for object id in the url which returns a specific movie from the database
 app.get('/api/movie/:id', async (req, res) => {
   const movie = await Movie.findById(req.params.id);
-  res.send(movie);
+  res.json(movie);
 });
 
 app.listen(port, () => {
