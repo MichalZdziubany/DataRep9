@@ -65,10 +65,16 @@ app.listen(port, () => {
 });
 
 //recieves the data from the client
-app.post('/api/movies', (req, res) => {
-    console.log("Movie:" + req.body.title);
-    res.send(`Movie Recieved`);
-});
+//saves the data to the database
+app.post('/api/movies', async (req, res)=>{
+
+  const { title, year, poster } = req.body;
+ 
+  const newMovie = new Movie({ title, year, poster });
+  await newMovie.save();
+ 
+  res.status(201).json({ message: 'Movie created successfully', movie: newMovie });
+  })
 
 //error handling
 app.use((err, req, res, next) => {
