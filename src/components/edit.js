@@ -6,7 +6,9 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 export default function Edit(props) {
-//defines parameters
+//useParams in this case gets the id of the movie we want to edit
+//useNavigated redirects the user back to the read component
+//add state variables to your functional components
   let { id } = useParams();
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
@@ -15,7 +17,7 @@ export default function Edit(props) {
 
 //edits the movie to what the user inputs
 useEffect(() => {
-    axios.get('http://localhost:4000/api/movie/' + id)
+    axios.get('http://localhost:4000/api/movies/' + id)
         .then((response) => {
             setTitle(response.data.title);
             setYear(response.data.year);
@@ -30,7 +32,7 @@ useEffect(() => {
 const handleSubmit = (event) => {
     event.preventDefault();
     const newMovie = { id, title, year, poster };
-    axios.put('http://localhost:4000/api/movie/' + id, newMovie)
+    axios.put('http://localhost:4000/api/movies/' + id, newMovie)
         .then((res) => {
             console.log(res.data);
             navigate('/read');
