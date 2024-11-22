@@ -44,6 +44,12 @@ app.get('/api/movies/:id', async (req, res) => {
   res.json(movie);
 });
 
+//this route updates a specific movies information 
+app.put('/api/movies/:id', async (req, res) => {
+  let movie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.send(movie);
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
