@@ -73,11 +73,11 @@ app.use((err, req, res, next) => {
 });
 
 //Deletion handling
-app.delete('/api/movie/:id', async (req, res) => {
+app.delete('/api/movies/:id', async (req, res) => {
   
   console.log('Deleting movie with ID:', req.params.id);
   //find the movie by id and delete it from the list
-  const movie = await movieModel.findByIdAndDelete(req.params.id);
+  const movie = await Movie.findByIdAndDelete(req.params.id);
   res.status(200).send({ message: "Movie deleted successfully", movie });
   
 });
