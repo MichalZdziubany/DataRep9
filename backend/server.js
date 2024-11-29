@@ -71,3 +71,13 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
 });
+
+//Deletion handling
+app.delete('/api/movie/:id', async (req, res) => {
+  
+  console.log('Deleting movie with ID:', req.params.id);
+  //find the movie by id and delete it from the list
+  const movie = await movieModel.findByIdAndDelete(req.params.id);
+  res.status(200).send({ message: "Movie deleted successfully", movie });
+  
+});
