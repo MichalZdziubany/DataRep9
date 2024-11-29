@@ -1,10 +1,17 @@
 import MovieItem from "./movieitem";
 
-const Movies = (props)=>{
-    return props.myMovies.map(
-        (movie)=>{
-            return <MovieItem mymovie={movie} key={movie._id} />
-        }
+function Movies(props) {
+    return (
+        <>
+            {props.myMovies.map((movie) => (
+                <MovieItem
+                    myMovie={movie}
+                    key={movie._id}
+                    {/*Passes the reload function to trigger a refresh after deletion*/}
+                    Reload={props.ReloadData}
+                />
+            ))}
+        </>
     );
 }
 
